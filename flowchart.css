@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Hind:wght@400;500;600;700&family=Yatra+One&display=swap');
+
+:root {
+  --map-ink: #182722;
+  --map-muted: #617069;
+  --map-paper: #f1ecdf;
+  --map-paper-light: #faf7ef;
+  --map-saffron: #c65f35;
+  --map-gold: #d8ae62;
+  --map-green: #365a4a;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body.map-body {
+  margin: 0;
+  color: var(--map-ink);
+  background: #d8d2c5;
+  font-family: "Hind", "Noto Sans Devanagari", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.map-shell {
+  width: min(100%, 1600px);
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--map-paper);
+  box-shadow: 0 24px 80px #18272220;
+}
+
+.map-header {
+  position: relative;
+  min-height: 390px;
+  padding: 30px clamp(28px, 6vw, 92px) 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+  grid-template-rows: auto 1fr auto;
+  column-gap: clamp(36px, 7vw, 112px);
+  color: var(--map-paper-light);
+  background:
+    linear-gradient(90deg, #182722 0%, #182722f7 37%, #182722b8 69%, #18272285 100%),
+    linear-gradient(0deg, #182722c9, transparent 62%),
+    url("assets/kurukshetra.png") center 45% / cover;
+}
+
+.map-header::after {
+  position: absolute;
+  right: clamp(28px, 5vw, 76px);
+  bottom: 28px;
+  width: 112px;
+  height: 112px;
+  border: 1px solid #d8ae6277;
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.map-brand {
+  grid-column: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  color: #f3ebd8;
+  font-size: 13px;
+  letter-spacing: .06em;
+  text-decoration: none;
+}
+
+.map-brand i { width: 27px; height: 1px; background: var(--map-gold); }
+.map-kicker { grid-column: 2; justify-self: end; align-self: center; color: #e2bd79; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; }
+
+.map-header h1 {
+  grid-column: 1;
+  align-self: center;
+  margin: 22px 0 6px;
+  max-width: 720px;
+  font-family: "Yatra One", "DM Serif Display", serif;
+  font-size: clamp(54px, 7.5vw, 112px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.map-header h1 em { color: #e0b36b; font-style: normal; }
+.map-deck { grid-column: 1; margin: 8px 0 0; color: #eee8dbbd; font-size: clamp(15px, 1.4vw, 19px); }
+
+.map-thesis {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 2 / 4;
+  align-self: end;
+  margin: 0 0 8px;
+  padding: 27px 30px 25px;
+  border-top: 1px solid #d8ae62b3;
+  border-bottom: 1px solid #d8ae6266;
+  background: #13201cb8;
+  backdrop-filter: blur(4px);
+}
+
+.thesis-mark { display: block; height: 28px; color: var(--map-gold); font: 56px/.8 "DM Serif Display", serif; }
+.map-thesis p { margin: 10px 0 16px; font-size: clamp(18px, 2vw, 25px); line-height: 1.55; }
+.map-thesis small { color: #d9b975; font-size: 12px; letter-spacing: .08em; }
+
+.map-spine { padding: 42px clamp(28px, 6vw, 92px) 46px; }
+.section-mark { display: grid; grid-template-columns: 46px auto 1fr; align-items: baseline; gap: 14px; margin-bottom: 30px; }
+.section-mark > span { color: var(--map-saffron); font: 19px "DM Serif Display", serif; }
+.section-mark h2 { margin: 0; font-family: "Yatra One", serif; font-size: 29px; font-weight: 400; }
+.section-mark p { justify-self: end; margin: 0; color: var(--map-muted); font-size: 14px; }
+
+.spine-track { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); align-items: start; }
+.spine-track::before { position: absolute; top: 17px; right: 9%; left: 9%; height: 1px; background: linear-gradient(90deg, #c65f35 0 24%, #b8ad99 24% 100%); content: ""; }
+.spine-node { position: relative; z-index: 1; display: block; padding: 0 24px 4px 0; color: inherit; text-decoration: none; }
+.spine-node:not(:first-child) { padding-left: 24px; border-left: 1px solid #d6cebd; }
+.node-no { display: grid; width: 35px; height: 35px; place-items: center; margin-bottom: 15px; border: 1px solid #b79a66; border-radius: 50%; color: var(--map-saffron); background: var(--map-paper); font: 13px "DM Serif Display", serif; }
+.spine-node h3 { margin: 0 0 5px; font-family: "Yatra One", serif; font-size: 25px; font-weight: 400; }
+.spine-node p { min-height: 48px; margin: 0; color: #4f5f57; font-size: 14px; line-height: 1.55; }
+.spine-node small { display: inline-block; margin-top: 12px; color: #a14e31; font-size: 12px; letter-spacing: .04em; }
+.spine-link { display: none; }
+
+.turn {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 1fr 52px;
+  align-items: center;
+  gap: 22px;
+  margin: 0 clamp(28px, 6vw, 92px);
+  padding: 20px 25px;
+  color: var(--map-paper-light);
+  background: var(--map-saffron);
+}
+
+.turn::after { position: absolute; bottom: -24px; left: 50%; width: 1px; height: 24px; background: #9b492b; content: ""; }
+.turn-number { color: #f0c58d; font: 28px "DM Serif Display", serif; }
+.turn small { color: #f8d6ad; font-size: 12px; letter-spacing: .12em; }
+.turn h2 { margin: 1px 0 0; font-family: "Yatra One", serif; font-size: clamp(23px, 3vw, 36px); font-weight: 400; }
+.turn p { margin: 0; color: #ffebd8; font-size: 14px; }
+.turn > a { display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid #f6d1aa88; border-radius: 50%; color: white; font-size: 25px; text-decoration: none; }
+
+.routes { position: relative; display: grid; grid-template-columns: .77fr 1.23fr; gap: 2px; margin: 44px clamp(28px, 6vw, 92px) 0; }
+.routes::before {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  left: 0;
+  height: 44px;
+  background:
+    linear-gradient(var(--map-saffron), var(--map-saffron)) 50% 0 / 1px 20px no-repeat,
+    linear-gradient(90deg, transparent 0 19.25%, #ab9d83 19.25% 69.25%, transparent 69.25% 100%) center 20px / 100% 1px no-repeat,
+    linear-gradient(#ab9d83, #ab9d83) 19.25% 20px / 1px 24px no-repeat,
+    linear-gradient(#ab9d83, #ab9d83) 69.25% 20px / 1px 24px no-repeat;
+  content: "";
+  pointer-events: none;
+}
+.route { position: relative; min-width: 0; padding: clamp(25px, 4vw, 52px); }
+.route-bhog { color: #412b23; background: #e8d9c3; }
+.route-yoga { isolation: isolate; overflow: hidden; color: #f4f0e5; background: var(--map-green); }
+.route-yoga::after {
+  position: absolute;
+  z-index: -1;
+  top: 30px;
+  right: -82px;
+  width: 260px;
+  aspect-ratio: 1;
+  border: 1px solid #e2bd7955;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 42%, #e2bd7918 42.3% 42.8%, transparent 43.1% 56%, #e2bd7915 56.3% 56.7%, transparent 57%);
+  box-shadow: 0 0 0 14px #e2bd7908, 0 0 0 28px #e2bd7908, 0 0 0 42px #e2bd7908;
+  content: "";
+  pointer-events: none;
+}
+.route header { margin-bottom: 27px; }
+.route-index { display: block; margin-bottom: 10px; color: #a45736; font-size: 11px; letter-spacing: .17em; text-transform: uppercase; }
+.route-yoga .route-index { color: #e2bd79; }
+.route h2 { margin: 0 0 10px; font-family: "Yatra One", serif; font-size: clamp(32px, 4.2vw, 56px); font-weight: 400; line-height: 1.1; }
+.route header p { margin: 0; color: #594d42; font-family: "DM Serif Display", "Hind", serif; font-size: clamp(18px, 2vw, 23px); line-height: 1.55; }
+.route-yoga header p { color: #e5eadf; }
+
+.route-steps { position: relative; padding: 0 0 0 2px; }
+.route-steps > div { display: grid; grid-template-columns: 36px 1fr; align-items: center; min-height: 57px; border-top: 1px solid #bfae97; }
+.route-steps > div span { color: #a45736; font: 13px "DM Serif Display", serif; }
+.route-steps > div p { margin: 0; font-size: 16px; font-weight: 600; }
+.route-steps > b { display: block; margin: -4px 0 -4px 10px; color: #a45736; font-weight: 400; }
+.route-bhog footer { display: flex; align-items: center; gap: 12px; margin-top: 23px; padding-top: 16px; border-top: 1px dashed #a98a70; }
+.route-bhog footer p { margin: 0; color: #81452e; font-size: 14px; }
+.loop-mark { font: 36px/1 "DM Serif Display", serif; }
+
+.practice-link { display: grid; grid-template-columns: 94px 1fr; align-items: center; gap: 12px; margin: 0 0 14px; padding: 13px 16px; border: 1px solid #d8ae6277; color: inherit; text-decoration: none; }
+.practice-link span { color: #e2bd79; font-family: "Yatra One", serif; font-size: 18px; }
+.practice-link strong { font-size: 13px; font-weight: 500; }
+.practice-link i { color: #e2bd79; font-style: normal; }
+.yoga-steps { display: grid; grid-template-columns: repeat(4, 1fr); }
+.yoga-steps a { position: relative; display: flex; min-height: 158px; flex-direction: column; padding: 18px 14px 12px 0; color: inherit; text-decoration: none; }
+.yoga-steps a + a { padding-left: 15px; border-left: 1px solid #d6e1d32b; }
+.yoga-steps a::before { position: absolute; top: 0; right: 10px; left: 0; height: 1px; background: #d8ae6299; content: ""; }
+.yoga-steps a + a::before { left: 15px; }
+.yoga-steps a > span { margin-bottom: 18px; color: #e2bd79; font: 13px "DM Serif Display", serif; }
+.yoga-steps strong { font-family: "Yatra One", serif; font-size: clamp(17px, 1.8vw, 23px); font-weight: 400; }
+.yoga-steps small { margin-top: 8px; color: #e3e8dfbb; font-size: 12px; line-height: 1.55; }
+.destination { position: relative; margin-top: 14px; padding: 18px 20px; color: var(--map-ink); background: #e2bd79; }
+.destination::before { position: absolute; top: -15px; left: 50%; height: 15px; border-left: 1px solid #e2bd79; content: ""; }
+.destination span { font-family: "Yatra One", serif; font-size: 24px; }
+.destination p { margin: 2px 0 0; font-size: 13px; }
+
+.map-ending { position: relative; display: flex; align-items: center; gap: 23px; margin: 0 clamp(28px, 6vw, 92px); padding: 30px 0 24px; border-bottom: 1px solid #c8bda8; }
+.ending-ornament { color: var(--map-saffron); font-size: 34px; }
+.map-ending p { margin: 0; font-family: "DM Serif Display", "Hind", serif; font-size: clamp(20px, 2.4vw, 30px); line-height: 1.35; }
+.map-ending strong { color: var(--map-saffron); font-weight: 400; }
+.map-ending small { margin-left: auto; color: var(--map-muted); font-size: 12px; text-align: right; }
+.map-actions { display: flex; justify-content: center; gap: 13px; padding: 24px; }
+.map-actions a, .map-actions button { min-height: 44px; padding: 10px 18px; border: 1px solid var(--map-ink); color: var(--map-ink); background: transparent; font: 600 14px "Hind", sans-serif; text-decoration: none; cursor: pointer; }
+.map-actions a { color: var(--map-paper-light); background: var(--map-ink); }
+.map-actions a:hover, .map-actions button:hover { transform: translateY(-1px); }
+
+@media (max-width: 800px) {
+  .map-header { min-height: 0; grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; gap: 0; padding-bottom: 30px; background-position: 64% center; }
+  .map-header::after { right: 24px; bottom: 22px; width: 72px; height: 72px; }
+  .map-kicker { grid-column: 1; justify-self: start; margin-top: 26px; }
+  .map-header h1 { grid-column: 1; grid-row: 3; margin-top: 18px; font-size: clamp(53px, 12vw, 82px); }
+  .map-deck { grid-row: 4; max-width: 450px; }
+  .map-thesis { grid-column: 1; grid-row: 5; margin: 30px 0 0; padding: 20px 22px; }
+  .section-mark { grid-template-columns: 36px auto; gap: 10px; }
+  .section-mark p { grid-column: 2; justify-self: start; }
+  .spine-track { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+  .spine-track::before { display: none; }
+  .spine-node { min-height: 134px; padding-right: 16px; }
+  .spine-node:not(:first-child) { padding-left: 16px; }
+  .spine-node:nth-of-type(3) { padding-left: 0; border-left: 0; }
+  .spine-node p { min-height: 0; }
+  .routes { grid-template-columns: 1fr; }
+  .routes { margin-top: 24px; }
+  .routes::before { display: none; }
+  .yoga-steps strong { font-size: 19px; }
+}
+
+@media (max-width: 520px) {
+  .map-header { padding: 23px 22px 26px; }
+  .map-brand { font-size: 11px; }
+  .map-header h1 { font-size: 55px; }
+  .map-thesis { margin-top: 24px; }
+  .map-thesis p { font-size: 18px; }
+  .map-spine { padding: 31px 22px 35px; }
+  .section-mark { margin-bottom: 24px; }
+  .section-mark h2 { font-size: 25px; }
+  .section-mark p { font-size: 13px; }
+  .spine-track { grid-template-columns: 1fr; row-gap: 0; }
+  .spine-node, .spine-node:not(:first-child), .spine-node:nth-of-type(3) { min-height: 0; padding: 0 0 20px 48px; border: 0; }
+  .spine-node::before { position: absolute; top: 35px; bottom: -1px; left: 17px; width: 1px; background: #c5b89f; content: ""; }
+  .spine-node:last-child::before { display: none; }
+  .node-no { position: absolute; top: 0; left: 0; width: 35px; height: 35px; margin: 0; }
+  .spine-node h3 { font-size: 23px; }
+  .spine-node p { font-size: 13px; }
+  .spine-node small { margin-top: 6px; }
+  .turn { grid-template-columns: 34px 1fr 38px; gap: 12px; margin: 0 22px; padding: 15px 14px; }
+  .turn-number { font-size: 21px; }
+  .turn h2 { font-size: 23px; }
+  .turn p { font-size: 12px; }
+  .turn > a { width: 36px; height: 36px; font-size: 20px; }
+  .routes { margin: 39px 22px 0; }
+  .routes { margin-top: 24px; }
+  .route { padding: 25px 22px; }
+  .route h2 { font-size: 39px; }
+  .yoga-steps { grid-template-columns: 1fr 1fr; row-gap: 10px; }
+  .yoga-steps a { min-height: 130px; padding-right: 10px; }
+  .yoga-steps a:nth-child(3) { padding-left: 0; border-left: 0; }
+  .yoga-steps a:nth-child(3)::before { left: 0; }
+  .practice-link { grid-template-columns: 1fr; gap: 2px; }
+  .map-ending { flex-wrap: wrap; gap: 12px; margin: 0 22px; }
+  .map-ending p { flex: 1; min-width: 200px; font-size: 22px; }
+  .map-ending small { width: 100%; margin: 0 0 0 47px; text-align: left; }
+}
+
+@media print {
+  @page { size: A3 landscape; margin: 9mm; }
+  body.map-body { background: white; }
+  .map-shell { width: 100%; min-height: 0; box-shadow: none; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .map-header { min-height: 250px; padding: 18px 42px 27px; grid-template-columns: 1.12fr .88fr; }
+  .map-header h1 { font-size: 68px; }
+  .map-thesis { padding: 16px 22px; }
+  .map-thesis p { font-size: 18px; }
+  .map-spine { padding: 25px 42px 27px; }
+  .section-mark { margin-bottom: 17px; }
+  .spine-node p { min-height: 0; }
+  .turn { margin: 0 42px; padding: 12px 20px; }
+  .routes { grid-template-columns: .77fr 1.23fr; margin: 32px 42px 0; }
+  .route { padding: 25px 32px; }
+  .yoga-steps a { min-height: 140px; }
+  .map-ending { margin: 0 42px; padding: 20px 0; }
+  .map-actions { display: none; }
+}
