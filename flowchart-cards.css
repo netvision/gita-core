@@ -67,12 +67,12 @@
 .card-open { display: grid; place-items: center; width: 2.3rem; height: 2.3rem; border: 1px solid #c8bea8; border-radius: 50%; color: #a14e31; font-size: 1.1rem; transition: transform .18s ease, background .18s ease; }
 .path-card:hover .card-open { transform: rotate(45deg); color: #faf7ef; background: #c65f35; }
 .journey-item.tone-origin .path-card { border-top-color: #c65f35; }
-.journey-item.tone-turn .path-card { border-top-color: #c65f35; background: #f3e4d4; }
-.journey-item.tone-destination .path-card { border-color: #182722; border-top: 3px solid #d8ae62; color: #faf7ef; background: #182722; }
-.journey-item.tone-destination .card-number { border-color: #d8ae62; color: #d8ae62; background: #20362e; }
-.journey-item.tone-destination .card-source, .journey-item.tone-destination .card-cue { color: #e2bd79; }
-.journey-item.tone-destination .card-idea { color: #e2e5da; }
-.journey-item.tone-destination .card-open { border-color: #d8ae6266; color: #e2bd79; }
+.journey-item.tone-turn .path-card { border-top-color: #c65f35; }
+.journey-item.tone-destination .path-card { border-color: #d7ad4f; border-top: 3px solid #e6b83d; color: #203b31; background: radial-gradient(ellipse at 12% 8%, #fffdf2 0%, transparent 46%), linear-gradient(118deg, #fbf2d5 0%, #f3e2ae 54%, #eaf0d5 100%); box-shadow: 0 12px 34px #bd96332b, inset 0 0 0 1px #ffffffa8; }
+.journey-item.tone-destination .card-number { border-color: #c49a3e; color: #315245; background: #fff8df; }
+.journey-item.tone-destination .card-source, .journey-item.tone-destination .card-cue { color: #80612b; }
+.journey-item.tone-destination .card-idea { color: #354d3f; }
+.journey-item.tone-destination .card-open { border-color: #c49a3e88; color: #80612b; }
 .journey-connector { position: relative; z-index: 1; display: grid; place-items: center; width: 4rem; height: 2.4rem; margin: 0 0 0 0; color: #a14e31; background: #f1ecdf; font: 500 1.35rem "Hind", sans-serif; }
 .journey-connector span { display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border: 1px solid #c8bea8; border-radius: 50%; background: #f1ecdf; }
 
